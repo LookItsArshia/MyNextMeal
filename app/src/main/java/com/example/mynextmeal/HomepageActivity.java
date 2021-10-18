@@ -19,6 +19,8 @@ public class HomepageActivity extends AppCompatActivity {
     public void scanIngredients(View view) {
         Log.i("Location:","in Scan Ingredients");
 //        Intent camera = new Intent("","")
+        Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivity(cameraIntent);
 //        startService(downloadIntent);
     }
     public void openMyMenu(View view) {
