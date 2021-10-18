@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyNextMeal</string>
+    <string name="homepage_scan_button">Scan Ingredients</string>
+    <string name="homepage_menu_button">My Menu</string>
 </resources>
