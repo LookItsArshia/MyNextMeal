@@ -18,12 +18,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
         android:layout_below="@+id/homepage_scan_button"
-        android:text="@string/homepage_menu_button"
-        android:onClick="openMyMenu"/>
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:onClick="openMyMenu"
+        android:text="@string/homepage_menu_button" />
 
 
 </RelativeLayout>

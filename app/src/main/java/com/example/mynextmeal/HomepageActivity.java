@@ -24,7 +24,7 @@ public class HomepageActivity extends AppCompatActivity {
     }
     public void openMyMenu(View view) {
         Log.i("Location:","in openMyMenu");
-        //        Intent camera = new Intent("","")
-        //        startService(downloadIntent);
+        Intent menu = new Intent(this.getApplicationContext(), Menu.class);
+        startActivity(menu);
     }
 }
