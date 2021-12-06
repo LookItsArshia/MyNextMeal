@@ -8,10 +8,12 @@
     android:layout_height="match_parent"
     tools:context=".MainMenuActivity"
     android:orientation="vertical">
-    
+
+    <include layout="@layout/toolbar"/>
+
     <Space
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="214dp" />
     
     
     <Button
