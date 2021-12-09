@@ -116,7 +116,8 @@ public class HomepageActivity extends AppCompatActivity {
 
     public void openMyMenu(View view) {
         Log.i("Location:","in openMyMenu");
-        Intent menu = new Intent(this.getApplicationContext(), Menu.class);
+        Intent menu = new Intent(this.getApplicationContext(), Ingredients.class);
+        menu.putStringArrayListExtra("veggie", (ArrayList<String>)veggies);
         startActivity(menu);
     }
 

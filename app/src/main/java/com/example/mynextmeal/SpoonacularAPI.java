@@ -29,8 +29,8 @@ public class SpoonacularAPI extends AsyncTask<List<String>, Integer, String> {
     protected String doInBackground(List<String>... strings) {
 
         Log.i("strings", strings.toString());
-        for(int i = 0;i<strings.length;i++){
-            ingredients = ingredients+strings[i];
+        for(int i = 0;i<strings[0].size();i++){
+            ingredients = ingredients+strings[0].get(i);
 //            Log.i("ingredients", strings[i]);
         }
 //        ingredients = String.join(",", strings);
