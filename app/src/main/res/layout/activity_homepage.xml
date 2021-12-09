@@ -16,11 +16,12 @@
         android:text="@string/homepage_scan_button" />
 
     <Button
+        android:id="@+id/checkIng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/homepage_scan_button"
         android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         android:onClick="openMyMenu"
         android:text="@string/homepage_menu_button" />
 
@@ -32,12 +33,19 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-1dp"
         android:contentDescription="TODO"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@drawable/logo" />
 
-    <Button
-        android:layout_width="wrap_content"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="spoonacular"/>
+        android:layout_above="@+id/imageView"
+        android:layout_below="@+id/checkIng"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:max="100"
+        android:layout_marginBottom="34dp" />
 
 
 </RelativeLayout>

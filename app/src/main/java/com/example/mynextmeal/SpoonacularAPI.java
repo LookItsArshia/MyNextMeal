@@ -17,16 +17,17 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SpoonacularAPI extends AsyncTask<List<String>, Integer, String> {
+public class SpoonacularAPI extends AsyncTask<List<String>, Integer, List<String>> {
 
     OkHttpClient client = new OkHttpClient();
     List<Recipe> recipes = new ArrayList<>();
+    List<String> titles = new ArrayList<>();
     String ingredients = "";
 
 
 
     @Override
-    protected String doInBackground(List<String>... strings) {
+    protected List<String> doInBackground(List<String>... strings) {
 
         Log.i("strings", strings.toString());
         for(int i = 0;i<strings[0].size();i++){
@@ -57,14 +58,16 @@ public class SpoonacularAPI extends AsyncTask<List<String>, Integer, String> {
                 formatRecipe(recipe);
             }
 
-            return "done";
+            return titles;
         }
         catch (Exception e){
             Log.i("SpoonacularAPI","failed");
             Log.e("Spoon",e.toString());
-            return "fail";
+            return titles;
         }
     }
+
+
 
     public void formatRecipe(JSONObject recipe) throws JSONException {
         List<String> ingredients = new ArrayList<>();
@@ -85,7 +88,7 @@ public class SpoonacularAPI extends AsyncTask<List<String>, Integer, String> {
         Log.i("image", image);
         Log.i("format recipe", recipe.toString());
         Recipe newRecipe = new Recipe(title, image, ingredients);
-
+        titles.add(title);
         Log.i("creaedREcipe", newRecipe.title);
         recipes.add(newRecipe);
     }

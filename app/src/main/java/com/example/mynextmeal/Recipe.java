@@ -1,8 +1,12 @@
 package com.example.mynextmeal;
 
-import java.util.List;
+import androidx.annotation.NonNull;
 
-public class Recipe {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class Recipe extends ArrayList<String> {
     String title;
     String image;
     List<String> ingredients;
@@ -15,5 +19,11 @@ public class Recipe {
 
     public void addIngredients(String ingred){
         this.ingredients.add(ingred);
+    }
+
+    @NonNull
+    @Override
+    public Stream<String> stream() {
+        return null;
     }
 }

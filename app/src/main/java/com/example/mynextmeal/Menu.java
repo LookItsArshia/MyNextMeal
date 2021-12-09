@@ -3,10 +3,14 @@ package com.example.mynextmeal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,6 +27,7 @@ public class Menu extends AppCompatActivity {
     private ArrayList<String> mArrayList;
     private Button submitBtn;
     private List<Recipe> recipes;
+    private List<String> newRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,26 @@ public class Menu extends AppCompatActivity {
         mListView = findViewById(R.id.mListView);
 
         menuAdapter = new MenuAdapter(this);
-        mListView.setAdapter(menuAdapter);
+
+        newRecipe = getIntent().getStringArrayListExtra("recipes");
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                newRecipe );
+        mListView.setAdapter(arrayAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                WebView mWebview = new WebView(Menu.this);
+                setContentView(mWebview);
+                Log.i("web", "Loading " + newRecipe.get(position));
+                mWebview.loadUrl("http://www.google.com/search?q="+newRecipe.get(position));
+//                Intent m = new Intent(Menu.this, Browser.class);
+//                m.putExtra("item",newRecipe.get(position));
+//                startActivity(m);
+            }
+        });
 
 
 

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -65,6 +66,7 @@ public class HomepageActivity extends AppCompatActivity {
     public List<ClarifaiOutput<Concept>> result;
     public Bitmap incomingImage;
     public List<String> veggies;
+    ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,7 @@ public class HomepageActivity extends AppCompatActivity {
         veggies = new ArrayList<String>();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
+        progress = findViewById(R.id.progressBar);
         scanBtn = findViewById(R.id.homepage_scan_button);
         imageView = findViewById(R.id.imageView);
         scanBtn.setOnClickListener(new View.OnClickListener() {
@@ -86,9 +88,9 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
         try {
-            URL url = new URL("https://www.mealgarden.com/media/recipe/2016/05/veggies.jpeg"); //Will be the bytearray of the image just taken
-            incomingImage = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            imageView.setImageBitmap(incomingImage);
+//            URL url = new URL("https://www.mealgarden.com/media/recipe/2016/05/veggies.jpeg"); //Will be the bytearray of the image just taken
+//            incomingImage = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//            imageView.setImageBitmap(incomingImage);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -100,15 +102,23 @@ public class HomepageActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK){
 //            Bitmap incomingImage = (Bitmap) data.getExtras().get("data");
-            bitmap = incomingImage;
+
 //            imageView.setImageBitmap(incomingImage);
             try{
+//                URL url = new URL("https://www.mealgarden.com/media/recipe/2016/05/veggies.jpeg"); //Will be the bytearray of the image just taken
+//                incomingImage = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//                imageView.setImageBitmap(incomingImage);
+                bitmap = incomingImage;
+
+
+
+
                 new getCall().execute(request);
 
             }catch (Exception e){
                 e.printStackTrace();
             }
-            Toast.makeText(this, "Added image and result", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Got Image", Toast.LENGTH_SHORT).show();
             Log.i("Homepage","Added image and result");
 
         }
@@ -126,9 +136,9 @@ public class HomepageActivity extends AppCompatActivity {
         strings.add("carrots");
         strings.add("tomatoes");
         SpoonacularAPI api = new SpoonacularAPI();
-        AsyncTask<List<String>, Integer, String> res = api.execute(strings);
-        Log.i("homepage", String.valueOf(res));
-        Log.i("Homepage", "called spoon");
+//        AsyncTask<List<String>, Integer, String> res = api.execute(strings);
+//        Log.i("homepage", String.valueOf(res));
+//        Log.i("Homepage", "called spoon");
     }
 
     class getModel extends AsyncTask<ClarifaiResponse<Model<?>>, String, Model<Concept>>{
@@ -147,7 +157,7 @@ public class HomepageActivity extends AppCompatActivity {
         }
     }
 
-    class getCall extends AsyncTask<PredictRequest<Concept>, String, List<ClarifaiOutput<Concept>>>{
+    class getCall extends AsyncTask<PredictRequest<Concept>, Integer, List<ClarifaiOutput<Concept>>>{
 
         @Override
         protected List<ClarifaiOutput<Concept>> doInBackground(PredictRequest<Concept>... data) {
@@ -161,8 +171,21 @@ public class HomepageActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onProgressUpdate(Integer... values) {
+//            super.onProgressUpdate(values);
+//            progress.setProgress(values[0]);
+            Log.i("val", values[0].toString());
+        }
+
+
+
+        @Override
         protected void onPostExecute(List<ClarifaiOutput<Concept>> s) {
             super.onPostExecute(s);
+//            if(progress.getProgress() >= 99){
+//                progress.setVisibility(View.INVISIBLE);
+//            }
+
             for(int i = 0; i <= 5; i++){
                 veggies.add(result.get(0).data().get(i).name());
                 Log.i(ACTIVITY_NAME, "Added: " + result.get(0).data().get(0).name());

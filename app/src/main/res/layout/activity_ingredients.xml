@@ -6,9 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Ingredients">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate Recipe"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="403dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="400dp"
+        android:layout_height="354dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,6 +27,7 @@
         <ListView
             android:id="@+id/listViewVeggies"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="355dp" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
