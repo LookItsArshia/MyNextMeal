@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyNextMeal</string>
+    <string name="homepage_scan_button">Scan Ingredients</string>
+    <string name="homepage_menu_button">My Menu</string>
+    <string name="opening_login">Log In</string>
+    <string name="opening_create_account">Create Account</string>
+    <string name="opening_title">MyNextMeal</string>
+    <string name="opening_google_login">Log in with Google</string>
 </resources>
