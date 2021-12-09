@@ -17,14 +17,26 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SpoonacularAPI extends AsyncTask<String, Integer, String> {
+public class SpoonacularAPI extends AsyncTask<List<String>, Integer, String> {
 
     OkHttpClient client = new OkHttpClient();
     List<Recipe> recipes = new ArrayList<>();
+    String ingredients;
+
 
 
     @Override
-    protected String doInBackground(String... strings) {
+    protected String doInBackground(List<String>... strings) {
+
+        Log.i("strings", strings.toString());
+        for(int i = 0;i<strings.length;i++){
+            ingredients = ingredients+strings[i];
+//            Log.i("ingredients", strings[i]);
+        }
+//        ingredients = String.join(",", strings);
+        Log.i("INGREDIENTS!!: ",ingredients);
+
+//        String baseUrl = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=" + ingredients + "&number=10&limitLicense=true&ranking=1&ignorePantry=false&apiKey=a95b70309cfe4cb986bdea28a29a03b5";
         String url = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=carrots,tomatoes&number=10&limitLicense=true&ranking=1&ignorePantry=false&apiKey=a95b70309cfe4cb986bdea28a29a03b5";
         Request request = new Request.Builder()
                 .url(url)
