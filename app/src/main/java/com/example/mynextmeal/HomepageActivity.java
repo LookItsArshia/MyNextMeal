@@ -122,8 +122,8 @@ public class HomepageActivity extends AppCompatActivity {
 
     public void spoonacular(View view) throws IOException {
         List<String> strings = new ArrayList<>();
-        strings.add("a");
-        strings.add("b");
+        strings.add("carrots");
+        strings.add("tomatoes");
         SpoonacularAPI api = new SpoonacularAPI();
         AsyncTask<List<String>, Integer, String> res = api.execute(strings);
         Log.i("homepage", String.valueOf(res));
