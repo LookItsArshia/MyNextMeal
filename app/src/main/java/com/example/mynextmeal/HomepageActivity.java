@@ -86,7 +86,7 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
         try {
-            URL url = new URL("https://www.mealgarden.com/media/recipe/2016/05/veggies.jpeg");
+            URL url = new URL("https://www.mealgarden.com/media/recipe/2016/05/veggies.jpeg"); //Will be the bytearray of the image just taken
             incomingImage = BitmapFactory.decodeStream(url.openConnection().getInputStream());
             imageView.setImageBitmap(incomingImage);
         }catch (Exception e){
@@ -156,9 +156,6 @@ public class HomepageActivity extends AppCompatActivity {
                 veggies.add(result.get(0).data().get(i).name());
                 Log.i(ACTIVITY_NAME, "Added: " + result.get(0).data().get(0).name());
             }
-
-
-
         }
     }
 }
