@@ -33,6 +33,10 @@
         android:layout_marginBottom="109dp"
         android:contentDescription="TODO"
         app:srcCompat="@drawable/ic_launcher_foreground" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="spoonacular"/>
 
 
 </RelativeLayout>

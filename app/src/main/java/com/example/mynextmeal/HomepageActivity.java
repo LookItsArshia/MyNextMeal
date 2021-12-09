@@ -120,6 +120,13 @@ public class HomepageActivity extends AppCompatActivity {
         startActivity(menu);
     }
 
+    public void spoonacular(View view) throws IOException {
+        SpoonacularAPI api = new SpoonacularAPI();
+        AsyncTask<String, Integer, String> res = api.execute();
+        Log.i("homepage", String.valueOf(res));
+        Log.i("Homepage", "called spoon");
+    }
+
     class getModel extends AsyncTask<ClarifaiResponse<Model<?>>, String, Model<Concept>>{
 
         @Override
