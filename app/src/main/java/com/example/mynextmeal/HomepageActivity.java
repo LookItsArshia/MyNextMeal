@@ -1,3 +1,4 @@
+
 package com.example.mynextmeal;
 
 import androidx.appcompat.app.AppCompatActivity;

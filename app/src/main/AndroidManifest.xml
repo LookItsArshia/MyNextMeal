@@ -23,5 +23,4 @@
         <activity android:name=".HomepageActivity" />
         <activity android:name=".MainActivity" />
     </application>
-
 </manifest>
