@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Menu extends AppCompatActivity {
 
@@ -21,11 +22,14 @@ public class Menu extends AppCompatActivity {
     private MenuAdapter menuAdapter;
     private ArrayList<String> mArrayList;
     private Button submitBtn;
+    private List<Recipe> recipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+//        SpoonacularAPI getRecipes = new SpoonacularAPI();
+//        getRecipes()
         mArrayList = new ArrayList<String>();
         submitBtn = findViewById(R.id.checkBtn);
 
